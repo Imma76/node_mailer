@@ -2,7 +2,9 @@ import mailer from "./mail.config.js";
 
 class MailController {
   async sendMail(req, res) {
-    const { name, email, message } = req.body;
+    const name = req.body.name;
+    const message = req.body.message;
+    const email = req.body.email;
     try {
     mailer(email, message, name);
     return res.status(200).send({
