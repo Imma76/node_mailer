@@ -3,7 +3,7 @@ import dotenv from "dotenv";
 
 dotenv.config();
 
-const mailer = (sender, text, name) => {
+const mailer = (sender, text, name,receiver) => {
   const transporter = nodemailer.createTransport({
     service: "gmail",
     auth: {
@@ -15,7 +15,8 @@ const mailer = (sender, text, name) => {
 
   const mailOptions = {
     from: sender,
-    to: "chyke.ghoul@gmail.com",
+    sender:sender,
+    to: `${receiver}`,
     subject: `Email from ${name}`,
     text: text
   };

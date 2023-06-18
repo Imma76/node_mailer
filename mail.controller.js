@@ -4,9 +4,10 @@ class MailController {
   async sendMail(req, res) {
     const name = req.body.name;
     const message = req.body.message;
-    const email = req.body.email;
+    const email = req.body.sender;
+    const receiver = req.body.receiver;
     try {
-    mailer(email, message, name);
+    mailer(email, message, name,receiver);
     return res.status(200).send({
         success: true,
         message: `mail sent successfully`
